@@ -12,6 +12,7 @@
     <link href="{% static "css/custom-styles.css"%}" rel="stylesheet" />
      <!-- Google Fonts-->
    <link href="{% static "css/css.css"%}" rel='stylesheet' type='text/css' />
+   {% block otherhead %}{% endblock %}
 </head>
 <body>
     <div id="wrapper">
@@ -31,41 +32,46 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a href="#"><i class="fa fa-dashboard"></i> -----</a>
-                    </li>
-                    <li>
                     	<a href="#"><i class="fa fa-beer"></i> Almacen<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'almacen:stock' %}">Stock</a>
+                            </li>
                             <li>
                                 <a href="{% url 'almacen:agregar' %}">Agregar</a>
                             </li>
                             <li>
-                                <a href="#">Compras</a>
+                                <a href="{% url 'almacen:comprar' %}">Comprar</a>
                             </li>
                             <li>
-                                <a href="#">Salida</a>
-                            </li>
-                            <li>
-                                <a href="#">Reportes<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Stock</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Gastos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Salidas</a>
-                                    </li>
-                                </ul>
+                                <a href="{% url 'almacen:salida' %}">Salida</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit"></i> -----</a>
+                        <a href="#"><i class="fa fa-money"></i> Finanzas<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'finanzas:gasto' %}">Gasto Diario</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'finanzas:venta' %}">Venta Diaria</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'finanzas:ogasto' %}">Otro Gasto</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'finanzas:oventa' %}">Otro Ingreso</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a class="active-menu" href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="#"><i class="fa fa-file-text-o"></i> Reportes<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{% url 'finanzas:delmes' %}">Del mes</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
 
@@ -75,10 +81,11 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
 		  	<div class="header"> 
-				{% block content %}{% endblock %}			
+				{% block header %}{% endblock %}			
 			</div>
-            <div id="page-inner"> 
-				 <footer><p>All right reserved. El Bonnuss</p></footer>
+            <div id="page-inner">
+                {% block content %}{% endblock %}           
+				<footer><p>All right reserved. El Bonnuss</p></footer>
 			</div>
              <!-- /. PAGE INNER  -->
         </div>
@@ -88,12 +95,12 @@
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <script src="{% static "js/jquery-1.10.2.js"%}"></script>
-      <!-- Bootstrap Js -->
+     <!-- Bootstrap Js -->
     <script src="{% static "js/bootstrap.min.js"%}"></script>
     <!-- Metis Menu Js -->
     <script src="{% static "js/jquery.metisMenu.js"%}"></script>
-      <!-- Custom Js -->
+    {% block otherscript %}{% endblock %}
+    <!-- Custom Js -->
     <script src="{% static "js/custom-scripts.js"%}"></script>
-   	{% block otherscript %}{% endblock %}
 </body>
 </html>

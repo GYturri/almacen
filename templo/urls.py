@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', Home.as_view(), name='home'),
     url(r'^almacen/', include('almacen.urls', namespace="almacen")),
+    url(r'^finanzas/', include('finanzas.urls', namespace="finanzas")),
 ]

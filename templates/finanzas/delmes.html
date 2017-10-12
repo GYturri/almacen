@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header %}
+                        <h1 class="page-header">
+                            SisAd <small>Sistema de administracion.</small>
+                        </h1>
+{% endblock %}
+{% block content %}
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Reporte Mensual de Octubre
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                	<h3>Compras totales</h3>
+                                	<p>-{{ compras }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                	<h3>Gastos Diarios</h3>
+                                	<p>-{{ gastod }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                	<h3>Ventas Diarias</h3>
+                                	<p>+{{ ventad }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                	<h3>Otros Gastos</h3>
+                                	<p>-{{ ogasto }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                	<h3>Otros Ingresos</h3>
+                                	<p>+{{ oventa }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                	<h3>Total Recaudado</h3>
+                                	<h2>={{ total }}</h2>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+{% endblock %}

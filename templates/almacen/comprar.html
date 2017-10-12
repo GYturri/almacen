@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Nuevo Producto{% endblock %}
+{% block title %}Compra{% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Nuevo Producto <small>Agregar nuevo producto.</small>
+                             Producto <small>Agregar compra.</small>
                         </h1>
 {% endblock %}
 {% block content %}
@@ -17,20 +17,19 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST">{% csrf_token %}
-                                        <div class="form-group">
-                                            <label>Nombres</label>
-                                            {{form.nombre}}
-                                            {{form.nombre.errors}}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Detalle</label>
-                                            {{form.detalle}}
-                                            {{form.detalle.errors}}
+                                    	<div class="form-group">
+                                            <label>Producto</label>
+                                            <select name="producto" class="form-control">
+                                            	{% for prod in productos %}<option value="{{ prod.id }}">{{ prod.nombre }}</option>{% endfor %}
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Cantidad</label>
-                                            {{form.stock}}
-                                            {{form.stock.errors}}
+                                            <input type="number" name="cantidad" required="" class="form-control" placeholder="Cantidad">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Precio</label>
+                                            <input type="number" name="precio" required="" class="form-control" placeholder="Precio">
                                         </div>
                                         <button type="submit" class="btn btn-default">Registrar</button>
                                         <button type="reset" class="btn btn-default">Reset</button>
@@ -46,4 +45,3 @@
                 <!-- /.col-lg-12 -->
             </div>
 {% endblock %}
-https://webthemez.com/demo/marvel-bootstrap-html-admin-template/empty.html

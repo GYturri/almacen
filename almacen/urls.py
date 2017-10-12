@@ -1,8 +1,9 @@
 from django.conf.urls import url
-from .views import Agregar
+from .views import Agregar, Comprar, Salir, Stock
 
 urlpatterns = [
+	url(r'^$', Stock.as_view(), name='stock'),
     url(r'^agregar/$', Agregar.as_view(), name='agregar'),
-    #url(r'^nuevo-paciente/$', Npaciente.as_view(), name='npaciente'),
-    #url(r'^buscar/$', Buscar.as_view(), name='buscar'),
+    url(r'^comprar/$', Comprar.as_view(), name='comprar'),
+    url(r'^salida/$', Salir.as_view(), name='salida'),
 ]
