@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Nuevo Producto{% endblock %}
+{% block otherhead %}
+{% endblock %}
+{% block content %}
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>Nuevo Paciente<small>Registro de Informacion</small></h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <div class="box box-primary">
+            <div class="box-header">
+              <h3 class="box-title">Datos Personales</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+	          <form role="form" method="POST">{% csrf_token %}
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Nombres</label>
+                  {{form.nombre}}
+                  {{form.nombre.errors}}
+                </div>
+                <div class="form-group">
+                  <label>Detalle</label>
+                  {{form.detalle}}
+                  {{form.detalle.errors}}
+                </div>
+                <div class="form-group">
+                  <label>Cantidad</label>
+                  {{form.stock}}
+                  {{form.stock.errors}}
+                </div>  
+              </div><!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" value="registrar">Registrar</button>
+              </div>
+            </form>
+          </div><!-- /.box -->
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      https://webthemez.com/demo/marvel-bootstrap-html-admin-template/empty.html
+{% endblock %}
+{% block otherscript %}
+{% endblock %}
