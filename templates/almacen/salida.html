@@ -3,7 +3,7 @@
 {% block title %}Salida{% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Producto <small>Salida.</small>
+                             Producto <small>Registrar Salida.</small>
                         </h1>
 {% endblock %}
 {% block content %}
@@ -11,18 +11,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Salida
+                            Salida <br> Nombre: {{ producto.nombre }} <br> Descripcion: {{ producto.detalle }} <br> Cantidad actual: {{ producto.stock }}
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST">{% csrf_token %}
-                                    	<div class="form-group">
-                                            <label>Producto</label>
-                                            <select name="producto" class="form-control">
-                                            	{% for prod in productos %}<option value="{{ prod.id }}">{{ prod.nombre }}</option>{% endfor %}
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <label>Cantidad</label>
                                             <input type="number" name="cantidad" required="" class="form-control" placeholder="Cantidad">

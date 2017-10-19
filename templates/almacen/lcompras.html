@@ -1,24 +1,23 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Stock{% endblock %}
+{% block title %}Compras{% endblock %}
 {% block otherhead %}
     <!-- TABLE STYLES-->
     <link href="{% static "js/dataTables/dataTables.bootstrap.css"%}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Producto <small>Stock.</small>
+                             Compras <small>lista.</small>
                         </h1>
 {% endblock %}
 {% block content %}
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{% url 'almacen:agregar' %}"><button type="button" class="btn btn-info">Agregar Un nuevo producto</button></a>
                     <br><br>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Stock
+                             Compras
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -27,22 +26,20 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 15px;">No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 150px;">Item</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 250px;">Detalle</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 150px;">Producto</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 25px;">Cantidad</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Compra</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Salida</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 25px;">Costo</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 80px;">Fecha</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for prod in productos %}
+                                        {% for compra in compras %}
                                         <tr>
-                                            <td>{{ prod.id }}</td>
-                                            <td>{{ prod.nombre }}</td>
-                                            <td>{{ prod.detalle }}</td>
-                                            <td>{{ prod.stock }}</td>
-                                            <td><a href="{% url 'almacen:comprar' prod.id %}"><button type="button" class="btn btn-primary btn-sm">+</button></a></td>
-                                            <td><a href="{% url 'almacen:salida' prod.id %}"><button type="button" class="btn btn-danger btn-sm">-</button></a></td>
+                                            <td>{{ compra.id }}</td>
+                                            <td>{{ compra.producto.nombre }}</td>
+                                            <td>{{ compra.cantidad }}</td>
+                                            <td>{{ compra.costo }}</td>
+                                            <td>{{ compra.fecha }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

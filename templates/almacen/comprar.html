@@ -11,25 +11,19 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Agregar
+                            Compra <br> Nombre: {{ producto.nombre }} <br> Descripcion: {{ producto.detalle }} <br> Cantidad actual: {{ producto.stock }}
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST">{% csrf_token %}
-                                    	<div class="form-group">
-                                            <label>Producto</label>
-                                            <select name="producto" class="form-control">
-                                            	{% for prod in productos %}<option value="{{ prod.id }}">{{ prod.nombre }}</option>{% endfor %}
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <label>Cantidad</label>
                                             <input type="number" name="cantidad" required="" class="form-control" placeholder="Cantidad">
                                         </div>
                                         <div class="form-group">
                                             <label>Precio</label>
-                                            <input type="number" name="precio" required="" class="form-control" placeholder="Precio">
+                                            <input type="number" step='0.01' name="precio" required="" class="form-control" placeholder="Precio">
                                         </div>
                                         <button type="submit" class="btn btn-default">Registrar</button>
                                         <button type="reset" class="btn btn-default">Reset</button>

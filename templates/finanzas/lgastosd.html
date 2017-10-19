@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Stock{% endblock %}
+{% block title %}Gastos Diarios{% endblock %}
 {% block otherhead %}
     <!-- TABLE STYLES-->
     <link href="{% static "js/dataTables/dataTables.bootstrap.css"%}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Producto <small>Stock.</small>
+                             Gastos <small>Diarios.</small>
                         </h1>
 {% endblock %}
 {% block content %}
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{% url 'almacen:agregar' %}"><button type="button" class="btn btn-info">Agregar Un nuevo producto</button></a>
+                    <a href="{% url 'finanzas:gasto' %}"><button type="button" class="btn btn-info">Agregar Gasto de Hoy</button></a>
                     <br><br>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
@@ -27,22 +27,18 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 15px;">No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 150px;">Item</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 250px;">Detalle</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 25px;">Cantidad</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Compra</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Salida</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 250px;">Fecha</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 25px;">Gato total del dia</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Modificar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for prod in productos %}
+                                        {% for este in gastos %}
                                         <tr>
-                                            <td>{{ prod.id }}</td>
-                                            <td>{{ prod.nombre }}</td>
-                                            <td>{{ prod.detalle }}</td>
-                                            <td>{{ prod.stock }}</td>
-                                            <td><a href="{% url 'almacen:comprar' prod.id %}"><button type="button" class="btn btn-primary btn-sm">+</button></a></td>
-                                            <td><a href="{% url 'almacen:salida' prod.id %}"><button type="button" class="btn btn-danger btn-sm">-</button></a></td>
+                                            <td>{{ este.id }}</td>
+                                            <td>{{ este.fecha }}</td>
+                                            <td>{{ este.costo }}</td>
+                                            <td><a href="{# % url 'almacen:salida' prod.id % #}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

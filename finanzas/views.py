@@ -75,3 +75,8 @@ class DelMes(TemplateView):
 		context['oventa'] = preoventa
 		context['total'] = (preventad+preoventa)-(precompras+pregastod+preogasto)
 		return context
+
+class LgastosD(ListView):
+	template_name = "finanzas/lgastosd.html"
+	model = Gasto
+	context_object_name = 'gastos'
