@@ -11,7 +11,7 @@ class Compra(models.Model):
 	producto = models.ForeignKey(Producto)
 	cantidad = models.PositiveIntegerField(default=0)
 	costo = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-	fecha = models.DateField('registro', auto_now_add=True)
+	fecha = models.DateField('registro', auto_now_add=False)
 	def __str__(self):
 		return self.producto.nombre
 

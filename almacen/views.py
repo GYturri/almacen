@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, TemplateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView
 from django.http import HttpResponseRedirect
 from .models import Producto, Compra, Salida
 from .forms import NProducto
@@ -26,6 +26,7 @@ class Comprar(DetailView):
 		ncompra.producto = producto
 		ncompra.cantidad = request.POST['cantidad']
 		ncompra.costo = request.POST['precio']
+		ncompra.fecha = request.POST['fecha']
 		ncompra.save()
 		return HttpResponseRedirect('/almacen/')
 

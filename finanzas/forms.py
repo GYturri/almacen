@@ -5,8 +5,9 @@ from .models import Gasto, Venta, OtroGasto, OtraVenta
 class NGastoD(forms.ModelForm):
 	costo = forms.CharField(widget=forms.TextInput(attrs={
 			'class': 'form-control',
-			'placeholder': 'Gasto del dia',
+			'placeholder': '00.00',
 			'type': 'number',
+			'step': '0.1',
 			'required': '',
 		}))
 	class Meta:
@@ -16,8 +17,9 @@ class NGastoD(forms.ModelForm):
 class NVentaD(forms.ModelForm):
 	costo = forms.CharField(widget=forms.TextInput(attrs={
 			'class': 'form-control',
-			'placeholder': 'Venta del dia',
+			'placeholder': '00.00',
 			'type': 'number',
+			'step': '0.1',
 			'required': '',
 		}))
 	class Meta:
@@ -32,8 +34,9 @@ class NOGasto(forms.ModelForm):
 		}))
 	costo = forms.CharField(widget=forms.TextInput(attrs={
 			'class': 'form-control',
-			'placeholder': 'Precio',
+			'placeholder': '00.00',
 			'type': 'number',
+			'step': '0.1',
 			'required': '',
 		}))
 	class Meta:
@@ -48,8 +51,9 @@ class NOVenta(forms.ModelForm):
 		}))
 	costo = forms.CharField(widget=forms.TextInput(attrs={
 			'class': 'form-control',
-			'placeholder': 'Precio',
+			'placeholder': '00.00',
 			'type': 'number',
+			'step': '0.1',
 			'required': '',
 		}))
 	class Meta:

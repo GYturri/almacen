@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Gastos Diarios{% endblock %}
+{% block title %}Ventas Diarias{% endblock %}
 {% block otherhead %}
     <!-- TABLE STYLES-->
     <link href="{% static "js/dataTables/dataTables.bootstrap.css"%}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Gastos <small>Diarios.</small>
+                             Ventas <small>Diarias.</small>
                         </h1>
 {% endblock %}
 {% block content %}
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{% url 'finanzas:gasto' %}"><button type="button" class="btn btn-info">Agregar Gasto de Hoy</button></a>
+                    <a href="{% url 'finanzas:venta' %}"><button type="button" class="btn btn-info">Agregar Venta de Hoy</button></a>
                     <br><br>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Gastos Diarios
+                             Ventas Diarias
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -33,12 +33,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for este in gastos %}
+                                        {% for este in ventas %}
                                         <tr>
-                                            <td>{{ este.id }}</td>
+                                            <td>{{ forloop.counter }}</td>
                                             <td>{{ este.fecha }}</td>
                                             <td>{{ este.costo }}</td>
-                                            <td><a href="{% url 'finanzas:elgastod' este.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a></td>
+                                            <td><a href="{% url 'finanzas:laventad' este.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Compra{% endblock %}
+{% block title %}La venta diaria{% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Producto <small>Agregar compra.</small>
+                             Detalle de la Venta <small> diario.</small>
                         </h1>
 {% endblock %}
 {% block content %}
@@ -11,25 +11,21 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Compra <br> Nombre: {{ producto.nombre }} <br> Descripcion: {{ producto.detalle }} <br> Cantidad actual: {{ producto.stock }}
+                            Venta <br> Fecha: {{ venta.fecha }} <br> Cantidad: {{ venta.costo }}
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST">{% csrf_token %}
                                         <div class="form-group">
-                                            <label>Cantidad</label>
-                                            <input type="number" name="cantidad" required="" class="form-control" placeholder="Cantidad">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Precio</label>
-                                            <input type="number" step='0.1' name="precio" required="" class="form-control" placeholder="00.00">
-                                        </div>
-                                        <div class="form-group">
                                             <label>Fecha</label>
-                                            <input name="fecha" required="" class="form-control" placeholder="YYYY-MM-DD">
+                                            <input name="fecha" required="" class="form-control" value="{{venta.fecha|date:"Y-m-d"}}">
                                         </div>
-                                        <button type="submit" class="btn btn-default">Registrar</button>
+                                        <div class="form-group">
+                                            <label>Costo</label>
+                                            <input type="number" step='0.1' name="costo" required="" class="form-control" value="{{venta.costo}}">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Guardar cambios</button>
                                     </form>
                                 </div>
                             </div>

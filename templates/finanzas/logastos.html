@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Gastos Diarios{% endblock %}
+{% block title %}Otros Gastos{% endblock %}
 {% block otherhead %}
     <!-- TABLE STYLES-->
     <link href="{% static "js/dataTables/dataTables.bootstrap.css"%}" rel="stylesheet" />
 {% endblock %}
 {% block header %}
                         <h1 class="page-header">
-                             Gastos <small>Diarios.</small>
+                             Gastos <small>Otras.</small>
                         </h1>
 {% endblock %}
 {% block content %}
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{% url 'finanzas:gasto' %}"><button type="button" class="btn btn-info">Agregar Gasto de Hoy</button></a>
+                    <a href="{% url 'finanzas:ogasto' %}"><button type="button" class="btn btn-info">Agregar Otro Gasto</button></a>
                     <br><br>
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             Gastos Diarios
+                             Otras Gastos
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -27,18 +27,20 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 15px;">No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 250px;">Fecha</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 25px;">Gato total del dia</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 350px;">Descripcion</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Fecha</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 40px;">Costo</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 10px;">Modificar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for este in gastos %}
                                         <tr>
-                                            <td>{{ este.id }}</td>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ este.nombre }}</td>
                                             <td>{{ este.fecha }}</td>
                                             <td>{{ este.costo }}</td>
-                                            <td><a href="{% url 'finanzas:elgastod' este.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a></td>
+                                            <td><a href="{% url 'finanzas:eogasto' este.id %}"><button type="button" class="btn btn-warning btn-sm">Editar</button></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
